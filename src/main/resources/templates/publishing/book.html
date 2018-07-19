@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h2>变量表达式${...}</h2>
+    <b>使用${}变量表达式取值</b>
+
+    id : <span th:text="${book.lId}"></span><br>
+    strBookName : <span th:text="${book.strBookName}"></span><br>
+    strIsbn : <span th:text="${book.strIsbn}"></span><br>
+    <br>
+
+    <h2>URL表达式 @{...}</h2>
+    <a th:href="@{/book/detail(id=${book.lId} , strIsbn=${book.strIsbn})}" >url</a>
+
+    <h2>字符串拼接</h2>
+    <b th:text="${'书名为:' + book.strBookName }"></b><br/>
+    <b th:text="${'isbn号:' + book.strIsbn }"></b>
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function addByTransDate(dateParameter, num) {
+            var translateDate = "", dateString = "", monthString = "", dayString = "";
+            translateDate = dateParameter.replace("-", "/").replace("-", "/");
+            var newDate = new Date(translateDate);
+            newDate = newDate.valueOf();
+            newDate = newDate - num * 24 * 60 * 60 * 1000; //备注 如果是往前计算日期则为减号 否则为加号
+            newDate = new Date(newDate);
+            //如果月份长度少于2，则前加 0 补位
+            if ((newDate.getMonth() + 1).toString().length == 1) {
+                monthString = 0 + "" + (newDate.getMonth() + 1).toString();
+            } else {
+                monthString = (newDate.getMonth() + 1).toString();
+            }
+            //如果天数长度少于2，则前加 0 补位
+            if (newDate.getDate().toString().length == 1) {
+                dayString = 0 + "" + newDate.getDate().toString();
+            } else {
+                dayString = newDate.getDate().toString();
+            }
+            dateString = newDate.getFullYear() + "-" + monthString + "-" + dayString;
+            return dateString;
+        }
+
+        console.log(addByTransDate("2018-02-12", -2));
+    </script>
+</head>
+<body>
+<h1 th:text="${url}">Hello World</h1>
+当前时间为 : <b th:text="${currentTime}" ></b> <br>
+密码为 : <b th:text="${passwd}"></b>
+<br>
+Host地址 : <a th:href="${host}" th:text="${host}"></a>
+
+
+</body>
+</html>

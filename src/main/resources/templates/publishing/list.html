@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <b>th:each循环</b>
+    <b>书籍列表</b>
+    <ul th:each="book : ${books}">
+        <li th:text="${'编号: ${bookStat.count}' + bookStat.count}"></li>
+        <li th:text="${book.lId}"></li>
+        <li th:text="${book.strBookName}"></li>
+        <li th:text="${book.strIsbn}"></li>
+    </ul>
+
+    <b> *{...} 选择表达式 </b>
+    <ul th:object="${books[0]}">
+        <li th:text="*{lId}"></li>
+        <li th:text="*{strBookName}"></li>
+        <li th:text="*{strIsbn}"></li>
+    </ul>
+
+</body>
+</html>

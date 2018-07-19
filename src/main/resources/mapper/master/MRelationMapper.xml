@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.captain.store.dao.master.MRelationMapper">
+  <resultMap id="BaseResultMap" type="com.captain.store.model.MRelation">
+    <id column="lId" jdbcType="BIGINT" property="lid" />
+    <result column="lLendIntentId" jdbcType="BIGINT" property="llendintentid" />
+    <result column="lBorrowIntentId" jdbcType="BIGINT" property="lborrowintentid" />
+    <result column="lMatchAmount" jdbcType="BIGINT" property="lmatchamount" />
+    <result column="lLenderId" jdbcType="BIGINT" property="llenderid" />
+    <result column="lBorrowerId" jdbcType="BIGINT" property="lborrowerid" />
+    <result column="strLenderIdentity" jdbcType="VARCHAR" property="strlenderidentity" />
+    <result column="strLenderName" jdbcType="VARCHAR" property="strlendername" />
+    <result column="strLenderMobile" jdbcType="VARCHAR" property="strlendermobile" />
+    <result column="lLendProductId" jdbcType="BIGINT" property="llendproductid" />
+    <result column="strLendProductCode" jdbcType="VARCHAR" property="strlendproductcode" />
+    <result column="strLendProductName" jdbcType="VARCHAR" property="strlendproductname" />
+    <result column="strLendModelCode" jdbcType="VARCHAR" property="strlendmodelcode" />
+    <result column="dtLendTime" jdbcType="VARCHAR" property="dtlendtime" />
+    <result column="lLendAmount" jdbcType="BIGINT" property="llendamount" />
+    <result column="strBorrowIdentity" jdbcType="VARCHAR" property="strborrowidentity" />
+    <result column="strBorrowName" jdbcType="VARCHAR" property="strborrowname" />
+    <result column="strBorrowMobile" jdbcType="VARCHAR" property="strborrowmobile" />
+    <result column="dtBorrowTime" jdbcType="VARCHAR" property="dtborrowtime" />
+    <result column="lBorrowAmount" jdbcType="BIGINT" property="lborrowamount" />
+    <result column="nState" jdbcType="INTEGER" property="nstate" />
+    <result column="strStartDate" jdbcType="VARCHAR" property="strstartdate" />
+    <result column="strEndDate" jdbcType="VARCHAR" property="strenddate" />
+    <result column="nLendType" jdbcType="INTEGER" property="nlendtype" />
+    <result column="nBorrowType" jdbcType="INTEGER" property="nborrowtype" />
+    <result column="nLendYearRate" jdbcType="INTEGER" property="nlendyearrate" />
+    <result column="nBorrowYearRate" jdbcType="INTEGER" property="nborrowyearrate" />
+    <result column="tsRefreshTime" jdbcType="TIMESTAMP" property="tsrefreshtime" />
+    <result column="dtCreateTime" jdbcType="TIMESTAMP" property="dtcreatetime" />
+    <result column="nLendSystemSign" jdbcType="TINYINT" property="nlendsystemsign" />
+    <result column="nBorrowSystemSign" jdbcType="TINYINT" property="nborrowsystemsign" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lId, lLendIntentId, lBorrowIntentId, lMatchAmount, lLenderId, lBorrowerId, strLenderIdentity, 
+    strLenderName, strLenderMobile, lLendProductId, strLendProductCode, strLendProductName, 
+    strLendModelCode, dtLendTime, lLendAmount, strBorrowIdentity, strBorrowName, strBorrowMobile, 
+    dtBorrowTime, lBorrowAmount, nState, strStartDate, strEndDate, nLendType, nBorrowType, 
+    nLendYearRate, nBorrowYearRate, tsRefreshTime, dtCreateTime, nLendSystemSign, nBorrowSystemSign
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbMatchRelation
+    where lId = #{lid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbMatchRelation
+    where lId = #{lid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.captain.store.model.MRelation">
+    insert into tbMatchRelation (lId, lLendIntentId, lBorrowIntentId, 
+      lMatchAmount, lLenderId, lBorrowerId, 
+      strLenderIdentity, strLenderName, strLenderMobile, 
+      lLendProductId, strLendProductCode, strLendProductName, 
+      strLendModelCode, dtLendTime, lLendAmount, 
+      strBorrowIdentity, strBorrowName, strBorrowMobile, 
+      dtBorrowTime, lBorrowAmount, nState, 
+      strStartDate, strEndDate, nLendType, 
+      nBorrowType, nLendYearRate, nBorrowYearRate, 
+      tsRefreshTime, dtCreateTime, nLendSystemSign, 
+      nBorrowSystemSign)
+    values (#{lid,jdbcType=BIGINT}, #{llendintentid,jdbcType=BIGINT}, #{lborrowintentid,jdbcType=BIGINT}, 
+      #{lmatchamount,jdbcType=BIGINT}, #{llenderid,jdbcType=BIGINT}, #{lborrowerid,jdbcType=BIGINT}, 
+      #{strlenderidentity,jdbcType=VARCHAR}, #{strlendername,jdbcType=VARCHAR}, #{strlendermobile,jdbcType=VARCHAR}, 
+      #{llendproductid,jdbcType=BIGINT}, #{strlendproductcode,jdbcType=VARCHAR}, #{strlendproductname,jdbcType=VARCHAR}, 
+      #{strlendmodelcode,jdbcType=VARCHAR}, #{dtlendtime,jdbcType=VARCHAR}, #{llendamount,jdbcType=BIGINT}, 
+      #{strborrowidentity,jdbcType=VARCHAR}, #{strborrowname,jdbcType=VARCHAR}, #{strborrowmobile,jdbcType=VARCHAR}, 
+      #{dtborrowtime,jdbcType=VARCHAR}, #{lborrowamount,jdbcType=BIGINT}, #{nstate,jdbcType=INTEGER}, 
+      #{strstartdate,jdbcType=VARCHAR}, #{strenddate,jdbcType=VARCHAR}, #{nlendtype,jdbcType=INTEGER}, 
+      #{nborrowtype,jdbcType=INTEGER}, #{nlendyearrate,jdbcType=INTEGER}, #{nborrowyearrate,jdbcType=INTEGER}, 
+      #{tsrefreshtime,jdbcType=TIMESTAMP}, #{dtcreatetime,jdbcType=TIMESTAMP}, #{nlendsystemsign,jdbcType=TINYINT}, 
+      #{nborrowsystemsign,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.captain.store.model.MRelation">
+    insert into tbMatchRelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        lId,
+      </if>
+      <if test="llendintentid != null">
+        lLendIntentId,
+      </if>
+      <if test="lborrowintentid != null">
+        lBorrowIntentId,
+      </if>
+      <if test="lmatchamount != null">
+        lMatchAmount,
+      </if>
+      <if test="llenderid != null">
+        lLenderId,
+      </if>
+      <if test="lborrowerid != null">
+        lBorrowerId,
+      </if>
+      <if test="strlenderidentity != null">
+        strLenderIdentity,
+      </if>
+      <if test="strlendername != null">
+        strLenderName,
+      </if>
+      <if test="strlendermobile != null">
+        strLenderMobile,
+      </if>
+      <if test="llendproductid != null">
+        lLendProductId,
+      </if>
+      <if test="strlendproductcode != null">
+        strLendProductCode,
+      </if>
+      <if test="strlendproductname != null">
+        strLendProductName,
+      </if>
+      <if test="strlendmodelcode != null">
+        strLendModelCode,
+      </if>
+      <if test="dtlendtime != null">
+        dtLendTime,
+      </if>
+      <if test="llendamount != null">
+        lLendAmount,
+      </if>
+      <if test="strborrowidentity != null">
+        strBorrowIdentity,
+      </if>
+      <if test="strborrowname != null">
+        strBorrowName,
+      </if>
+      <if test="strborrowmobile != null">
+        strBorrowMobile,
+      </if>
+      <if test="dtborrowtime != null">
+        dtBorrowTime,
+      </if>
+      <if test="lborrowamount != null">
+        lBorrowAmount,
+      </if>
+      <if test="nstate != null">
+        nState,
+      </if>
+      <if test="strstartdate != null">
+        strStartDate,
+      </if>
+      <if test="strenddate != null">
+        strEndDate,
+      </if>
+      <if test="nlendtype != null">
+        nLendType,
+      </if>
+      <if test="nborrowtype != null">
+        nBorrowType,
+      </if>
+      <if test="nlendyearrate != null">
+        nLendYearRate,
+      </if>
+      <if test="nborrowyearrate != null">
+        nBorrowYearRate,
+      </if>
+      <if test="tsrefreshtime != null">
+        tsRefreshTime,
+      </if>
+      <if test="dtcreatetime != null">
+        dtCreateTime,
+      </if>
+      <if test="nlendsystemsign != null">
+        nLendSystemSign,
+      </if>
+      <if test="nborrowsystemsign != null">
+        nBorrowSystemSign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        #{lid,jdbcType=BIGINT},
+      </if>
+      <if test="llendintentid != null">
+        #{llendintentid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowintentid != null">
+        #{lborrowintentid,jdbcType=BIGINT},
+      </if>
+      <if test="lmatchamount != null">
+        #{lmatchamount,jdbcType=BIGINT},
+      </if>
+      <if test="llenderid != null">
+        #{llenderid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowerid != null">
+        #{lborrowerid,jdbcType=BIGINT},
+      </if>
+      <if test="strlenderidentity != null">
+        #{strlenderidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendername != null">
+        #{strlendername,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendermobile != null">
+        #{strlendermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="llendproductid != null">
+        #{llendproductid,jdbcType=BIGINT},
+      </if>
+      <if test="strlendproductcode != null">
+        #{strlendproductcode,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendproductname != null">
+        #{strlendproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendmodelcode != null">
+        #{strlendmodelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dtlendtime != null">
+        #{dtlendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="llendamount != null">
+        #{llendamount,jdbcType=BIGINT},
+      </if>
+      <if test="strborrowidentity != null">
+        #{strborrowidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowname != null">
+        #{strborrowname,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowmobile != null">
+        #{strborrowmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="dtborrowtime != null">
+        #{dtborrowtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lborrowamount != null">
+        #{lborrowamount,jdbcType=BIGINT},
+      </if>
+      <if test="nstate != null">
+        #{nstate,jdbcType=INTEGER},
+      </if>
+      <if test="strstartdate != null">
+        #{strstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="strenddate != null">
+        #{strenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="nlendtype != null">
+        #{nlendtype,jdbcType=INTEGER},
+      </if>
+      <if test="nborrowtype != null">
+        #{nborrowtype,jdbcType=INTEGER},
+      </if>
+      <if test="nlendyearrate != null">
+        #{nlendyearrate,jdbcType=INTEGER},
+      </if>
+      <if test="nborrowyearrate != null">
+        #{nborrowyearrate,jdbcType=INTEGER},
+      </if>
+      <if test="tsrefreshtime != null">
+        #{tsrefreshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dtcreatetime != null">
+        #{dtcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nlendsystemsign != null">
+        #{nlendsystemsign,jdbcType=TINYINT},
+      </if>
+      <if test="nborrowsystemsign != null">
+        #{nborrowsystemsign,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.captain.store.model.MRelation">
+    update tbMatchRelation
+    <set>
+      <if test="llendintentid != null">
+        lLendIntentId = #{llendintentid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowintentid != null">
+        lBorrowIntentId = #{lborrowintentid,jdbcType=BIGINT},
+      </if>
+      <if test="lmatchamount != null">
+        lMatchAmount = #{lmatchamount,jdbcType=BIGINT},
+      </if>
+      <if test="llenderid != null">
+        lLenderId = #{llenderid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowerid != null">
+        lBorrowerId = #{lborrowerid,jdbcType=BIGINT},
+      </if>
+      <if test="strlenderidentity != null">
+        strLenderIdentity = #{strlenderidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendername != null">
+        strLenderName = #{strlendername,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendermobile != null">
+        strLenderMobile = #{strlendermobile,jdbcType=VARCHAR},
+      </if>
+      <if test="llendproductid != null">
+        lLendProductId = #{llendproductid,jdbcType=BIGINT},
+      </if>
+      <if test="strlendproductcode != null">
+        strLendProductCode = #{strlendproductcode,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendproductname != null">
+        strLendProductName = #{strlendproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="strlendmodelcode != null">
+        strLendModelCode = #{strlendmodelcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dtlendtime != null">
+        dtLendTime = #{dtlendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="llendamount != null">
+        lLendAmount = #{llendamount,jdbcType=BIGINT},
+      </if>
+      <if test="strborrowidentity != null">
+        strBorrowIdentity = #{strborrowidentity,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowname != null">
+        strBorrowName = #{strborrowname,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowmobile != null">
+        strBorrowMobile = #{strborrowmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="dtborrowtime != null">
+        dtBorrowTime = #{dtborrowtime,jdbcType=VARCHAR},
+      </if>
+      <if test="lborrowamount != null">
+        lBorrowAmount = #{lborrowamount,jdbcType=BIGINT},
+      </if>
+      <if test="nstate != null">
+        nState = #{nstate,jdbcType=INTEGER},
+      </if>
+      <if test="strstartdate != null">
+        strStartDate = #{strstartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="strenddate != null">
+        strEndDate = #{strenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="nlendtype != null">
+        nLendType = #{nlendtype,jdbcType=INTEGER},
+      </if>
+      <if test="nborrowtype != null">
+        nBorrowType = #{nborrowtype,jdbcType=INTEGER},
+      </if>
+      <if test="nlendyearrate != null">
+        nLendYearRate = #{nlendyearrate,jdbcType=INTEGER},
+      </if>
+      <if test="nborrowyearrate != null">
+        nBorrowYearRate = #{nborrowyearrate,jdbcType=INTEGER},
+      </if>
+      <if test="tsrefreshtime != null">
+        tsRefreshTime = #{tsrefreshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dtcreatetime != null">
+        dtCreateTime = #{dtcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nlendsystemsign != null">
+        nLendSystemSign = #{nlendsystemsign,jdbcType=TINYINT},
+      </if>
+      <if test="nborrowsystemsign != null">
+        nBorrowSystemSign = #{nborrowsystemsign,jdbcType=TINYINT},
+      </if>
+    </set>
+    where lId = #{lid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.captain.store.model.MRelation">
+    update tbMatchRelation
+    set lLendIntentId = #{llendintentid,jdbcType=BIGINT},
+      lBorrowIntentId = #{lborrowintentid,jdbcType=BIGINT},
+      lMatchAmount = #{lmatchamount,jdbcType=BIGINT},
+      lLenderId = #{llenderid,jdbcType=BIGINT},
+      lBorrowerId = #{lborrowerid,jdbcType=BIGINT},
+      strLenderIdentity = #{strlenderidentity,jdbcType=VARCHAR},
+      strLenderName = #{strlendername,jdbcType=VARCHAR},
+      strLenderMobile = #{strlendermobile,jdbcType=VARCHAR},
+      lLendProductId = #{llendproductid,jdbcType=BIGINT},
+      strLendProductCode = #{strlendproductcode,jdbcType=VARCHAR},
+      strLendProductName = #{strlendproductname,jdbcType=VARCHAR},
+      strLendModelCode = #{strlendmodelcode,jdbcType=VARCHAR},
+      dtLendTime = #{dtlendtime,jdbcType=VARCHAR},
+      lLendAmount = #{llendamount,jdbcType=BIGINT},
+      strBorrowIdentity = #{strborrowidentity,jdbcType=VARCHAR},
+      strBorrowName = #{strborrowname,jdbcType=VARCHAR},
+      strBorrowMobile = #{strborrowmobile,jdbcType=VARCHAR},
+      dtBorrowTime = #{dtborrowtime,jdbcType=VARCHAR},
+      lBorrowAmount = #{lborrowamount,jdbcType=BIGINT},
+      nState = #{nstate,jdbcType=INTEGER},
+      strStartDate = #{strstartdate,jdbcType=VARCHAR},
+      strEndDate = #{strenddate,jdbcType=VARCHAR},
+      nLendType = #{nlendtype,jdbcType=INTEGER},
+      nBorrowType = #{nborrowtype,jdbcType=INTEGER},
+      nLendYearRate = #{nlendyearrate,jdbcType=INTEGER},
+      nBorrowYearRate = #{nborrowyearrate,jdbcType=INTEGER},
+      tsRefreshTime = #{tsrefreshtime,jdbcType=TIMESTAMP},
+      dtCreateTime = #{dtcreatetime,jdbcType=TIMESTAMP},
+      nLendSystemSign = #{nlendsystemsign,jdbcType=TINYINT},
+      nBorrowSystemSign = #{nborrowsystemsign,jdbcType=TINYINT}
+    where lId = #{lid,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM tbMatchRelation WHERE 1=1
+  </select>
+
+  <!-- 调用存储过程 -->
+  <select id="pro_callFlushMatchRelationData" statementType="CALLABLE">
+    CALL test_flushMatchRelationData()
+  </select>
+
+  <select id="sum_LendIntent" parameterType="java.util.Map" resultType="long">
+    select COALESCE(sum(lSurplusAmount) , 0) FROM tbLendIntent
+    <where>
+      <if test="date != null">
+        AND UNIX_TIMESTAMP(strPurchaseDate)<![CDATA[ <= ]]>UNIX_TIMESTAMP(#{date})
+      </if>
+      <if test="state != null">
+        AND nLendType = #{state}
+      </if>
+    </where>
+  </select>
+  
+  <select id="sum_borrowIntent" parameterType="java.util.Map" resultType="long">
+    select COALESCE(sum(lRealAmount) , 0) FROM tbBorrowIntent
+    <where>
+      <if test="date != null">
+        AND UNIX_TIMESTAMP(dtLoanFinishTime)<![CDATA[ <= ]]>UNIX_TIMESTAMP(#{date})
+      </if>
+        AND nMatchState not in (20)
+      <if test="state != null">
+        AND nBorrowType = #{state}
+      </if>
+    </where>
+  </select>
+
+  <select id="sum_matchRelation" parameterType="java.util.Map" resultType="long">
+      select COALESCE(sum(lMatchAmount) , 0) from tbMatchRelation where 1=1
+  </select>
+
+    <select id="sum_borrowBill" parameterType="java.util.Map" resultType="long">
+        select COALESCE(sum(lPrincipal),0) from tbBorrowBill
+        <where>
+            <if test="date != null">
+                AND UNIX_TIMESTAMP(strRealRepayDate)<![CDATA[ <= ]]>UNIX_TIMESTAMP(#{date})
+            </if>
+        </where>
+    </select>
+
+    <select id="sum_redemptionIntent" parameterType="java.util.Map" resultType="long">
+        select COALESCE(sum(lPrincipal),0) from tbRedemptionIntent
+        <where>
+            <if test="date != null">
+                AND UNIX_TIMESTAMP(strRealBackTime)<![CDATA[ <= ]]>UNIX_TIMESTAMP(#{date})
+            </if>
+        </where>
+    </select>
+</mapper>

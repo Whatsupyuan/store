@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${'未转义:' + html}"></p>
+<p th:utext="${'转义字符:' + html}"></p>
+<!--
+未转义:Welcome to our <b>fantastic</b> grocery store!
+转义字符:Welcome to our fantastic grocery store!
+-->
+</body>
+</html>

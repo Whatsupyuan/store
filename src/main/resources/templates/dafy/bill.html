@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>infomation</title>
+    <script type="text/javascript" th:src="@{/static/jquery-1.4.2.min.js} "></script>
+    <script type="text/javascript">
+        function getBillObj() {
+            $.post("/bill/get/1000058" , {} , function (data) {
+                $.each(data, function (key, value) {
+                    $("#json_li").append("<li>" + key + "-" + value + "</li>") ;
+                });
+            });
+        }
+
+    </script>
+</head>
+<body>
+<input type="button" onclick="javascript:getBillObj();" value="获取bill对象"/>
+<ul id="json_li"></ul>
+</body>
+</html>

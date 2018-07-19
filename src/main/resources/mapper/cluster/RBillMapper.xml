@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.captain.store.dao.cluster.RBillMapper">
+  <resultMap id="BaseResultMap" type="com.captain.store.model.RBill">
+    <id column="lId" jdbcType="BIGINT" property="lid" />
+    <result column="lRecallPlanId" jdbcType="BIGINT" property="lrecallplanid" />
+    <result column="lBorrowerId" jdbcType="BIGINT" property="lborrowerid" />
+    <result column="strBorrowerLoginId" jdbcType="VARCHAR" property="strborrowerloginid" />
+    <result column="strBorrowerName" jdbcType="VARCHAR" property="strborrowername" />
+    <result column="lBorrowIntentId" jdbcType="BIGINT" property="lborrowintentid" />
+    <result column="nBorrowMode" jdbcType="TINYINT" property="nborrowmode" />
+    <result column="nRepaymentDest" jdbcType="TINYINT" property="nrepaymentdest" />
+    <result column="lBorrowerBillId" jdbcType="BIGINT" property="lborrowerbillid" />
+    <result column="nTermIndex" jdbcType="TINYINT" property="ntermindex" />
+    <result column="lPrincipal" jdbcType="BIGINT" property="lprincipal" />
+    <result column="lInterest" jdbcType="BIGINT" property="linterest" />
+    <result column="lBreachAmount" jdbcType="BIGINT" property="lbreachamount" />
+    <result column="lAmount" jdbcType="BIGINT" property="lamount" />
+    <result column="lReducePrincipal" jdbcType="BIGINT" property="lreduceprincipal" />
+    <result column="lReduceInterest" jdbcType="BIGINT" property="lreduceinterest" />
+    <result column="lReduceBreachAmount" jdbcType="BIGINT" property="lreducebreachamount" />
+    <result column="lReduceAmount" jdbcType="BIGINT" property="lreduceamount" />
+    <result column="lRepayedPrincipal" jdbcType="BIGINT" property="lrepayedprincipal" />
+    <result column="lRepayedInterest" jdbcType="BIGINT" property="lrepayedinterest" />
+    <result column="lRepayedBreachAmount" jdbcType="BIGINT" property="lrepayedbreachamount" />
+    <result column="lRepayedAmount" jdbcType="BIGINT" property="lrepayedamount" />
+    <result column="dtEndDate" jdbcType="TIMESTAMP" property="dtenddate" />
+    <result column="lCreatorId" jdbcType="BIGINT" property="lcreatorid" />
+    <result column="strCreatorName" jdbcType="VARCHAR" property="strcreatorname" />
+    <result column="dtCreateTime" jdbcType="TIMESTAMP" property="dtcreatetime" />
+    <result column="tsRefreshTime" jdbcType="TIMESTAMP" property="tsrefreshtime" />
+    <result column="lLoanFee" jdbcType="BIGINT" property="lloanfee" />
+    <result column="lOverdueLoanFee" jdbcType="BIGINT" property="loverdueloanfee" />
+    <result column="lRepayedLoanFee" jdbcType="BIGINT" property="lrepayedloanfee" />
+    <result column="lRepayedOverdueLoanFee" jdbcType="BIGINT" property="lrepayedoverdueloanfee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lId, lRecallPlanId, lBorrowerId, strBorrowerLoginId, strBorrowerName, lBorrowIntentId, 
+    nBorrowMode, nRepaymentDest, lBorrowerBillId, nTermIndex, lPrincipal, lInterest, 
+    lBreachAmount, lAmount, lReducePrincipal, lReduceInterest, lReduceBreachAmount, lReduceAmount, 
+    lRepayedPrincipal, lRepayedInterest, lRepayedBreachAmount, lRepayedAmount, dtEndDate, 
+    lCreatorId, strCreatorName, dtCreateTime, tsRefreshTime, lLoanFee, lOverdueLoanFee, 
+    lRepayedLoanFee, lRepayedOverdueLoanFee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbRecallBill
+    where lId = #{lid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tbRecallBill
+    where lId = #{lid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.captain.store.model.RBill">
+    insert into tbRecallBill (lId, lRecallPlanId, lBorrowerId, 
+      strBorrowerLoginId, strBorrowerName, lBorrowIntentId, 
+      nBorrowMode, nRepaymentDest, lBorrowerBillId, 
+      nTermIndex, lPrincipal, lInterest, 
+      lBreachAmount, lAmount, lReducePrincipal, 
+      lReduceInterest, lReduceBreachAmount, lReduceAmount, 
+      lRepayedPrincipal, lRepayedInterest, lRepayedBreachAmount, 
+      lRepayedAmount, dtEndDate, lCreatorId, 
+      strCreatorName, dtCreateTime, tsRefreshTime, 
+      lLoanFee, lOverdueLoanFee, lRepayedLoanFee, 
+      lRepayedOverdueLoanFee)
+    values (#{lid,jdbcType=BIGINT}, #{lrecallplanid,jdbcType=BIGINT}, #{lborrowerid,jdbcType=BIGINT}, 
+      #{strborrowerloginid,jdbcType=VARCHAR}, #{strborrowername,jdbcType=VARCHAR}, #{lborrowintentid,jdbcType=BIGINT}, 
+      #{nborrowmode,jdbcType=TINYINT}, #{nrepaymentdest,jdbcType=TINYINT}, #{lborrowerbillid,jdbcType=BIGINT}, 
+      #{ntermindex,jdbcType=TINYINT}, #{lprincipal,jdbcType=BIGINT}, #{linterest,jdbcType=BIGINT}, 
+      #{lbreachamount,jdbcType=BIGINT}, #{lamount,jdbcType=BIGINT}, #{lreduceprincipal,jdbcType=BIGINT}, 
+      #{lreduceinterest,jdbcType=BIGINT}, #{lreducebreachamount,jdbcType=BIGINT}, #{lreduceamount,jdbcType=BIGINT}, 
+      #{lrepayedprincipal,jdbcType=BIGINT}, #{lrepayedinterest,jdbcType=BIGINT}, #{lrepayedbreachamount,jdbcType=BIGINT}, 
+      #{lrepayedamount,jdbcType=BIGINT}, #{dtenddate,jdbcType=TIMESTAMP}, #{lcreatorid,jdbcType=BIGINT}, 
+      #{strcreatorname,jdbcType=VARCHAR}, #{dtcreatetime,jdbcType=TIMESTAMP}, #{tsrefreshtime,jdbcType=TIMESTAMP}, 
+      #{lloanfee,jdbcType=BIGINT}, #{loverdueloanfee,jdbcType=BIGINT}, #{lrepayedloanfee,jdbcType=BIGINT}, 
+      #{lrepayedoverdueloanfee,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.captain.store.model.RBill">
+    insert into tbRecallBill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        lId,
+      </if>
+      <if test="lrecallplanid != null">
+        lRecallPlanId,
+      </if>
+      <if test="lborrowerid != null">
+        lBorrowerId,
+      </if>
+      <if test="strborrowerloginid != null">
+        strBorrowerLoginId,
+      </if>
+      <if test="strborrowername != null">
+        strBorrowerName,
+      </if>
+      <if test="lborrowintentid != null">
+        lBorrowIntentId,
+      </if>
+      <if test="nborrowmode != null">
+        nBorrowMode,
+      </if>
+      <if test="nrepaymentdest != null">
+        nRepaymentDest,
+      </if>
+      <if test="lborrowerbillid != null">
+        lBorrowerBillId,
+      </if>
+      <if test="ntermindex != null">
+        nTermIndex,
+      </if>
+      <if test="lprincipal != null">
+        lPrincipal,
+      </if>
+      <if test="linterest != null">
+        lInterest,
+      </if>
+      <if test="lbreachamount != null">
+        lBreachAmount,
+      </if>
+      <if test="lamount != null">
+        lAmount,
+      </if>
+      <if test="lreduceprincipal != null">
+        lReducePrincipal,
+      </if>
+      <if test="lreduceinterest != null">
+        lReduceInterest,
+      </if>
+      <if test="lreducebreachamount != null">
+        lReduceBreachAmount,
+      </if>
+      <if test="lreduceamount != null">
+        lReduceAmount,
+      </if>
+      <if test="lrepayedprincipal != null">
+        lRepayedPrincipal,
+      </if>
+      <if test="lrepayedinterest != null">
+        lRepayedInterest,
+      </if>
+      <if test="lrepayedbreachamount != null">
+        lRepayedBreachAmount,
+      </if>
+      <if test="lrepayedamount != null">
+        lRepayedAmount,
+      </if>
+      <if test="dtenddate != null">
+        dtEndDate,
+      </if>
+      <if test="lcreatorid != null">
+        lCreatorId,
+      </if>
+      <if test="strcreatorname != null">
+        strCreatorName,
+      </if>
+      <if test="dtcreatetime != null">
+        dtCreateTime,
+      </if>
+      <if test="tsrefreshtime != null">
+        tsRefreshTime,
+      </if>
+      <if test="lloanfee != null">
+        lLoanFee,
+      </if>
+      <if test="loverdueloanfee != null">
+        lOverdueLoanFee,
+      </if>
+      <if test="lrepayedloanfee != null">
+        lRepayedLoanFee,
+      </if>
+      <if test="lrepayedoverdueloanfee != null">
+        lRepayedOverdueLoanFee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        #{lid,jdbcType=BIGINT},
+      </if>
+      <if test="lrecallplanid != null">
+        #{lrecallplanid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowerid != null">
+        #{lborrowerid,jdbcType=BIGINT},
+      </if>
+      <if test="strborrowerloginid != null">
+        #{strborrowerloginid,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowername != null">
+        #{strborrowername,jdbcType=VARCHAR},
+      </if>
+      <if test="lborrowintentid != null">
+        #{lborrowintentid,jdbcType=BIGINT},
+      </if>
+      <if test="nborrowmode != null">
+        #{nborrowmode,jdbcType=TINYINT},
+      </if>
+      <if test="nrepaymentdest != null">
+        #{nrepaymentdest,jdbcType=TINYINT},
+      </if>
+      <if test="lborrowerbillid != null">
+        #{lborrowerbillid,jdbcType=BIGINT},
+      </if>
+      <if test="ntermindex != null">
+        #{ntermindex,jdbcType=TINYINT},
+      </if>
+      <if test="lprincipal != null">
+        #{lprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="linterest != null">
+        #{linterest,jdbcType=BIGINT},
+      </if>
+      <if test="lbreachamount != null">
+        #{lbreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lamount != null">
+        #{lamount,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceprincipal != null">
+        #{lreduceprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceinterest != null">
+        #{lreduceinterest,jdbcType=BIGINT},
+      </if>
+      <if test="lreducebreachamount != null">
+        #{lreducebreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceamount != null">
+        #{lreduceamount,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedprincipal != null">
+        #{lrepayedprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedinterest != null">
+        #{lrepayedinterest,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedbreachamount != null">
+        #{lrepayedbreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedamount != null">
+        #{lrepayedamount,jdbcType=BIGINT},
+      </if>
+      <if test="dtenddate != null">
+        #{dtenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lcreatorid != null">
+        #{lcreatorid,jdbcType=BIGINT},
+      </if>
+      <if test="strcreatorname != null">
+        #{strcreatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtcreatetime != null">
+        #{dtcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsrefreshtime != null">
+        #{tsrefreshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lloanfee != null">
+        #{lloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="loverdueloanfee != null">
+        #{loverdueloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedloanfee != null">
+        #{lrepayedloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedoverdueloanfee != null">
+        #{lrepayedoverdueloanfee,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.captain.store.model.RBill">
+    update tbRecallBill
+    <set>
+      <if test="lrecallplanid != null">
+        lRecallPlanId = #{lrecallplanid,jdbcType=BIGINT},
+      </if>
+      <if test="lborrowerid != null">
+        lBorrowerId = #{lborrowerid,jdbcType=BIGINT},
+      </if>
+      <if test="strborrowerloginid != null">
+        strBorrowerLoginId = #{strborrowerloginid,jdbcType=VARCHAR},
+      </if>
+      <if test="strborrowername != null">
+        strBorrowerName = #{strborrowername,jdbcType=VARCHAR},
+      </if>
+      <if test="lborrowintentid != null">
+        lBorrowIntentId = #{lborrowintentid,jdbcType=BIGINT},
+      </if>
+      <if test="nborrowmode != null">
+        nBorrowMode = #{nborrowmode,jdbcType=TINYINT},
+      </if>
+      <if test="nrepaymentdest != null">
+        nRepaymentDest = #{nrepaymentdest,jdbcType=TINYINT},
+      </if>
+      <if test="lborrowerbillid != null">
+        lBorrowerBillId = #{lborrowerbillid,jdbcType=BIGINT},
+      </if>
+      <if test="ntermindex != null">
+        nTermIndex = #{ntermindex,jdbcType=TINYINT},
+      </if>
+      <if test="lprincipal != null">
+        lPrincipal = #{lprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="linterest != null">
+        lInterest = #{linterest,jdbcType=BIGINT},
+      </if>
+      <if test="lbreachamount != null">
+        lBreachAmount = #{lbreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lamount != null">
+        lAmount = #{lamount,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceprincipal != null">
+        lReducePrincipal = #{lreduceprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceinterest != null">
+        lReduceInterest = #{lreduceinterest,jdbcType=BIGINT},
+      </if>
+      <if test="lreducebreachamount != null">
+        lReduceBreachAmount = #{lreducebreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lreduceamount != null">
+        lReduceAmount = #{lreduceamount,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedprincipal != null">
+        lRepayedPrincipal = #{lrepayedprincipal,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedinterest != null">
+        lRepayedInterest = #{lrepayedinterest,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedbreachamount != null">
+        lRepayedBreachAmount = #{lrepayedbreachamount,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedamount != null">
+        lRepayedAmount = #{lrepayedamount,jdbcType=BIGINT},
+      </if>
+      <if test="dtenddate != null">
+        dtEndDate = #{dtenddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lcreatorid != null">
+        lCreatorId = #{lcreatorid,jdbcType=BIGINT},
+      </if>
+      <if test="strcreatorname != null">
+        strCreatorName = #{strcreatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtcreatetime != null">
+        dtCreateTime = #{dtcreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tsrefreshtime != null">
+        tsRefreshTime = #{tsrefreshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lloanfee != null">
+        lLoanFee = #{lloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="loverdueloanfee != null">
+        lOverdueLoanFee = #{loverdueloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedloanfee != null">
+        lRepayedLoanFee = #{lrepayedloanfee,jdbcType=BIGINT},
+      </if>
+      <if test="lrepayedoverdueloanfee != null">
+        lRepayedOverdueLoanFee = #{lrepayedoverdueloanfee,jdbcType=BIGINT},
+      </if>
+    </set>
+    where lId = #{lid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.captain.store.model.RBill">
+    update tbRecallBill
+    set lRecallPlanId = #{lrecallplanid,jdbcType=BIGINT},
+      lBorrowerId = #{lborrowerid,jdbcType=BIGINT},
+      strBorrowerLoginId = #{strborrowerloginid,jdbcType=VARCHAR},
+      strBorrowerName = #{strborrowername,jdbcType=VARCHAR},
+      lBorrowIntentId = #{lborrowintentid,jdbcType=BIGINT},
+      nBorrowMode = #{nborrowmode,jdbcType=TINYINT},
+      nRepaymentDest = #{nrepaymentdest,jdbcType=TINYINT},
+      lBorrowerBillId = #{lborrowerbillid,jdbcType=BIGINT},
+      nTermIndex = #{ntermindex,jdbcType=TINYINT},
+      lPrincipal = #{lprincipal,jdbcType=BIGINT},
+      lInterest = #{linterest,jdbcType=BIGINT},
+      lBreachAmount = #{lbreachamount,jdbcType=BIGINT},
+      lAmount = #{lamount,jdbcType=BIGINT},
+      lReducePrincipal = #{lreduceprincipal,jdbcType=BIGINT},
+      lReduceInterest = #{lreduceinterest,jdbcType=BIGINT},
+      lReduceBreachAmount = #{lreducebreachamount,jdbcType=BIGINT},
+      lReduceAmount = #{lreduceamount,jdbcType=BIGINT},
+      lRepayedPrincipal = #{lrepayedprincipal,jdbcType=BIGINT},
+      lRepayedInterest = #{lrepayedinterest,jdbcType=BIGINT},
+      lRepayedBreachAmount = #{lrepayedbreachamount,jdbcType=BIGINT},
+      lRepayedAmount = #{lrepayedamount,jdbcType=BIGINT},
+      dtEndDate = #{dtenddate,jdbcType=TIMESTAMP},
+      lCreatorId = #{lcreatorid,jdbcType=BIGINT},
+      strCreatorName = #{strcreatorname,jdbcType=VARCHAR},
+      dtCreateTime = #{dtcreatetime,jdbcType=TIMESTAMP},
+      tsRefreshTime = #{tsrefreshtime,jdbcType=TIMESTAMP},
+      lLoanFee = #{lloanfee,jdbcType=BIGINT},
+      lOverdueLoanFee = #{loverdueloanfee,jdbcType=BIGINT},
+      lRepayedLoanFee = #{lrepayedloanfee,jdbcType=BIGINT},
+      lRepayedOverdueLoanFee = #{lrepayedoverdueloanfee,jdbcType=BIGINT}
+    where lId = #{lid,jdbcType=BIGINT}
+  </update>
+</mapper>

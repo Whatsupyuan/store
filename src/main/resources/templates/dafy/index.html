@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>infomation</title>
+    <!--<script th:src="@{~/jquery-1.4.2.min.js}" type="text/javascript"></script>-->
+    <script type="text/javascript" th:src="@{/static/jquery-1.4.2.min.js} "></script>
+    <script type="text/javascript" th:src="@{/static/WdatePicker.js} "></script>
+    <script type="text/javascript">
+
+        function pro_call() {
+            $("#span_procall").css("color", "red");
+            $("#span_procall").append("执行中...");
+            $.post("/relation/flush" , "" , function (data) {
+                var status = eval(data);
+                if(status == 0) {
+                    //alert("存储过程执行 成功!");
+                    $("#span_procall").html("存储过程执行 成功!");
+                }else{
+                    //alert("存储过程执行 失败!");
+                    $("#span_procall").html("存储过程执行 失败!");
+                }
+            });
+        }
+
+        function queryDate(){
+            var date = $("#strDate").val();
+            if(date && date != '' && date != null) {
+                $("#span_queryInfo").html("查询中...");
+                $.post("/relation/query" , {strDate : date} , function (data) {
+                    $("#span_queryInfo").html(data);
+                })
+            }else{
+                $("#span_queryInfo").html("请选择查询日期");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h3>同步:</h3>
+    <p>
+        <input type="button" value="[同步] 匹配数据结果数据至单表" onclick="javascript:pro_call();"/>
+        <span id="span_procall"></span>
+    </p>
+    <h3>统计:</h3>
+    <p><!---->
+        <span>时间点:</span>
+        <!--<input onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间"/>-->
+        <input type="text" id="strDate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" placeholder="请选择时间"/>
+        <input type="button" value="[查询]" onclick="javascript:queryDate();" />
+    </p>
+    <p>
+        <span id="span_queryInfo" style="color: red;"></span>
+    </p>
+
+</body>
+</html>

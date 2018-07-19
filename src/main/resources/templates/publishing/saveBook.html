@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{~/book/save}" method="post" th:object="${book}">
+        <label>ID:</label>
+        <input type="text" th:field="*{lId}"/><br>
+        <label>BookName:</label>
+        <input type="text" th:field="*{strBookName}"/><br>
+        <label>ISBN:</label>
+        <input type="text" th:field="*{strIsbn}"/><br>
+        <input type="submit" value="提交"/>
+    </form>
+
+</body>
+</html>

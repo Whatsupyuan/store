@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<b>url 操作</b>
+<p>
+    1. 绝对网址 : <a th:href="@{https://www.baidu.com}">th:href="@{https://www.baidu.com}"</a>
+</p>
+
+<p>
+    2. 上下文相关URL : <a th:href="@{/book/get/111}">上下文相关URL</a>
+</p>
+
+<p>
+    3. 相对路径URL : <a th:href="@{~/book/get/111}">相关路径URL</a>
+</p>
+
+<p>
+    <script th:src="@{//127.0.0.1:8080/js/jquery-1.8.2.min.js}"></script>
+    4. 绝对路径url : <a th:href="@{//127.0.0.1:8080/book/get/111}" th:text="绝对路径URL"></a>
+</p>
+
+<p>
+    5. url中添加参数 : <a th:href="@{'~/book/get/' + ${id} }" th:text="url中添加参数"></a><br>
+    5.1. url中添加参数并添加参数 : <a th:href="@{'~/book/get/' + ${id}(id=${id}) }" th:text="url中添加参数"></a>
+</p>
+
+
+</body>
+</html>

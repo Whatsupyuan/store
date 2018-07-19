@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- th:if 判断标签 -->
+<table>
+ <thead>
+ <tr>
+     <th>ID</th>
+     <th>NAME</th>
+     <th>ISBN</th>
+     <th>Condition-long</th>
+     <th>Condition-String</th>
+ </tr>
+ <tr th:each="book : ${books}">
+     <td th:text="${book.lId}"></td>
+     <td th:text="${book.strBookName}"></td>
+     <td th:text="${book.strIsbn}"></td>
+     <td th:if="${book.lId eq 3}">condition-long</td>
+     <td th:if="${book.strIsbn eq '9871'}">condition-String</td>
+ </tr>
+ </thead>
+
+</table>
+
+<h5>th:switch...th:case</h5>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>ISBN</th>
+        <th>Condition-long</th>
+        <th>Condition-String</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.lId}"></td>
+        <td th:text="${book.strBookName}"></td>
+        <td th:text="${book.strIsbn}"></td>
+        <td style="position: center;" th:switch="${book.lId}">
+            <span th:case="1">编号一</span>
+            <span th:case="2">编号二</span>
+            <span th:case="3">编号三</span>
+        </td>
+        <td th:if="${book.strIsbn eq '9871'}">condition-String</td>
+    </tr>
+    </thead>
+
+</table>
+
+</body>
+</html>
