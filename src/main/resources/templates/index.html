@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script th:src="@{~/jquery-1.4.2.min.js}" type="text/javascript"></script>
-    <script type="text/javascript">
-
-    </script>
+    <script th:src="@{/static/jquery-1.4.2.min.js}" type="text/javascript"></script>
 </head>
 <body>
-    <p>
-        <input value="同步数据表匹配数据" onclick="javascript:pro_call();"/>
-        <span style="color: red;font-weight: bold;" id="proCall_span"></span>
-    </p>
+<!--<p>-->
+<!--<input value="同步数据表匹配数据" onclick="javascript:pro_call();"/>-->
+<!--<span style="color: red;font-weight: bold;" id="proCall_span"></span>-->
+<!--</p>-->
+
+<!--获取Jsp中类似的 ﻿<c:set var="ctx" value="${pageContext.request.contextPath}"/>-->
+<h3>ContextPath</h3>
+<li>
+    ${#httpServletRequest.getContextPath()} :
+    <b th:text="${#httpServletRequest.getContextPath()}"></b>
+    <b th:text="${'1123'}"></b>
+</li>
+<li>
+    ${#ctx.httpServletRequest} :
+    <b th:text="${#ctx.httpServletRequest}"></b>
+</li>
 </body>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
@@ -34,6 +35,12 @@ public class MasterDataSourceConfig {
     @Value("${jdbc0.driverClass}")
     private String driverClass;
 
+    @Value("${spring.datasource.druid.filters}")
+    private String filter;
+
+    @Value("${spring.datasource.druid.filter.wall.enabled}")
+    private boolean wall_state ;
+
     @Bean(name = "masterDataSource")
     @Primary
     public DataSource masterDataSource() {
@@ -42,6 +49,13 @@ public class MasterDataSourceConfig {
         dataSource.setUrl(url);
         dataSource.setUsername(user);
         dataSource.setPassword(password);
+        try {
+            dataSource.setFilters(filter);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //dataSource.setConnectProperties(connectionProperties);
+        dataSource.getWallStatValue(wall_state);
         return dataSource;
     }
 

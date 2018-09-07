@@ -3,8 +3,11 @@ package com.captain.store.servlet;
 import com.alibaba.druid.support.http.StatViewServlet;
 
 import javax.servlet.annotation.WebInitParam;
-import javax.servlet.annotation.WebServlet ;
+import javax.servlet.annotation.WebServlet;
 
+/**
+ * druid 控制台页面配置
+ */
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/druid/*", initParams = {
         //@WebInitParam(name = "allow", value = "192.168.16.110,127.0.0.1"),// IP白名单 (没有配置或者为空，则允许所有访问)

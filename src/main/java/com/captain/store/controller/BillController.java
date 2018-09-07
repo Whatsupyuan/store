@@ -25,4 +25,11 @@ public class BillController {
     public RBill getBill(@PathVariable("id") long id) {
         return rBillMapper.selectByPrimaryKey(id);
     }
+
+//    @RequestMapping("/list")
+//    public List<RBill> selectList() {
+//        PageHelper.startPage(1, 10);
+//        return this.rBillMapper.s(new RBill());
+//        //return null ;
+//    }
 }

@@ -1,8 +1,10 @@
 package com.captain.store.model;
 
+//import com.captain.store.base.BaseEntity;
+
 import java.util.Date;
 
-public class RBill {
+public class RBill{
     /**
      * 主键
      */
