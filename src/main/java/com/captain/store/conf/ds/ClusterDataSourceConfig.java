@@ -35,6 +35,47 @@ public class ClusterDataSourceConfig {
     @Value("${jdbc1.driverClass}")
     private String driverClass;
 
+
+    @Value("${spring.datasource.druid.initial-size}")
+    private int initialSize;
+
+    @Value("${spring.datasource.druid.min-idle}")
+    private int minIdle;
+
+    @Value("${spring.datasource.druid.max-wait}")
+    private int maxActive;
+
+    @Value("${spring.datasource.druid.max-active}")
+    private int maxWait;
+
+    @Value("${spring.datasource.druid.time-between-eviction-runs-millis}")
+    private int timeBetweenEvictionRunsMillis;
+
+    @Value("${spring.datasource.druid.min-evictable-idle-time-millis}")
+    private int minEvictableIdleTimeMillis;
+
+    @Value("${spring.datasource.druid.validation-query}")
+    private String validationQuery;
+
+    @Value("${spring.datasource.druid.test-while-idle}")
+    private boolean testWhileIdle;
+
+    @Value("${spring.datasource.druid.test-on-borrow}")
+    private boolean testOnBorrow;
+
+    @Value("${spring.datasource.druid.test-on-return}")
+    private boolean testOnReturn;
+
+    @Value("${spring.datasource.druid.pool-prepared-statements}")
+    private boolean poolPreparedStatements;
+
+    @Value("${spring.datasource.druid.max-pool-prepared-statement-per-connection-size}")
+    private int maxPoolPreparedStatementPerConnectionSize;
+
+    @Value("${spring.datasource.druid.connectionProperties}")
+    private String connectionProperties;
+
+
     @Value("${spring.datasource.druid.filters}")
     private String filter;
 
@@ -48,6 +89,22 @@ public class ClusterDataSourceConfig {
         dataSource.setUrl(url);
         dataSource.setUsername(user);
         dataSource.setPassword(password);
+
+        dataSource.setInitialSize(initialSize);
+        dataSource.setMinIdle(minIdle);
+        dataSource.setMaxActive(maxActive);
+        dataSource.setMaxWait(maxWait);
+        dataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
+        dataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
+        dataSource.setValidationQuery(validationQuery);
+        dataSource.setTestWhileIdle(testWhileIdle);
+        dataSource.setTestOnBorrow(testOnBorrow);
+        dataSource.setTestOnReturn(testOnReturn);
+        dataSource.setPoolPreparedStatements(poolPreparedStatements);
+        dataSource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
+        dataSource.setConnectionProperties(connectionProperties);
+
+
         try {
             dataSource.setFilters(filter);
         } catch (SQLException e) {
