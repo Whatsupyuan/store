@@ -2,6 +2,8 @@ package com.captain.store.dao.cluster;
 
 import com.captain.store.model.RBill;
 
+import java.util.List;
+
 public interface RBillMapper{
     /**
      *
@@ -38,4 +40,7 @@ public interface RBillMapper{
      * @mbg.generated 2018-07-18
      */
     int updateByPrimaryKey(RBill record);
+
+    List<RBill> getBillList(RBill bill);
+
 }

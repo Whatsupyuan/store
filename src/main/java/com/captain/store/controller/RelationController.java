@@ -5,6 +5,8 @@ import com.captain.store.dao.cluster.RBillMapper;
 import com.captain.store.dao.master.MRelationMapper;
 import com.captain.store.model.MRelation;
 import com.captain.store.model.RBill;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,10 +36,18 @@ public class RelationController {
         return "dafy/index";
     }
 
+    /**
+     * 使用PageHelper进行分页
+     * @return
+     */
     @RequestMapping(value = "/all")
     @ResponseBody
     public List<MRelation> selectAll() {
-        return relationMapper.selectAll();
+        List<MRelation> listRelation = new ArrayList<>();
+        Page<MRelation> page = PageHelper.offsetPage(1, 10 , false);
+        listRelation = relationMapper.selectAll();
+
+        return listRelation;
     }
 
     /**

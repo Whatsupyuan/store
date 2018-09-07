@@ -45,6 +45,8 @@ public interface MRelationMapper {
 
     List<MRelation> selectAll();
 
+//    List<MRelation> selectAllByCondition(MRelation relation);
+
     void pro_callFlushMatchRelationData();
 
     long sum_LendIntent(Map<String, Object> condition);

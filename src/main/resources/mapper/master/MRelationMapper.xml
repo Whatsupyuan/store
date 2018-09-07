@@ -456,4 +456,13 @@
             </if>
         </where>
     </select>
+
+  <select id="selectAllByCondition" parameterType="com.captain.store.model.MRelation" resultMap="BaseResultMap">
+    SELECT * from tbRedemptionIntent
+    <where>
+      <if test="">
+
+      </if>
+    </where>
+  </select>
 </mapper>
